@@ -2,6 +2,20 @@ provider "aws" {
   region = "ap-southeast-1"
 }
 
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0" # Use the version you're currently using
+    }
+    local = {
+      source  = "hashicorp/local"
+      version = "~> 2.4" # Latest version as of now
+    }
+  }
+}
+
 terraform {
   backend "s3" {
     bucket = "sctp-ce10-tfstate"
@@ -23,5 +37,5 @@ resource "aws_s3_bucket" "s3_tf" {
 
 
 resource "aws_sns_topic" "user_updates" {
-  name = "growfat-user-updates-topic"
+  name = "growfatlikeme-user-updates-topic"
 }
